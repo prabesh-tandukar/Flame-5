@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Passion+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Satisfy&family=Permanent+Marker&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -56,33 +56,69 @@
         margin: 0 auto 1.5rem;
         max-width: 450px;
         transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .flame-logo:hover {
         transform: scale(1.02);
       }
 
-      .flame-logo img {
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 10px 15px rgba(255, 102, 0, 0.3));
+      /* Bull Icon */
+      .bull-icon {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin-right: 15px;
       }
 
-      /* Add a subtle glow effect around the logo */
-      .flame-logo::after {
+      .bull-icon::before {
         content: "";
         position: absolute;
+        width: 80px;
+        height: 80px;
+
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      .bull-icon::after {
+        content: "";
+        position: absolute;
+        font-size: 54px;
+        left: 13px;
         top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-          circle at center,
-          rgba(255, 102, 0, 0.2) 0%,
-          transparent 70%
-        );
-        z-index: -1;
-        pointer-events: none;
+        z-index: 1;
+        filter: drop-shadow(0 0 10px rgba(255, 102, 0, 0.8));
+      }
+
+      /* Text Logo */
+      .logo-text {
+        display: flex;
+        align-items: center;
+      }
+
+      .flame-text {
+        font-family: "Satisfy", cursive;
+        font-size: 4rem;
+        font-weight: bold;
+        background: linear-gradient(to right, #ff9900, #ff3300);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
+        line-height: 1;
+        margin-right: -5px;
+      }
+
+      .number-five {
+        font-family: "Permanent Marker", cursive;
+        font-size: 5rem;
+        color: #ff3300;
+        text-shadow: 2px 2px 0 #ffcc00, 4px 4px 5px rgba(0, 0, 0, 0.5);
+        line-height: 1;
+        transform: rotate(5deg);
       }
 
       .tagline {
@@ -107,7 +143,7 @@
         box-shadow: 0 5px 15px rgba(255, 102, 0, 0.2);
       }
 
-      /* Animation for the tagline */
+      /* Animation for the logo and tagline */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -119,12 +155,27 @@
         }
       }
 
+      @keyframes flicker {
+        0%,
+        100% {
+          text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
+        }
+        50% {
+          text-shadow: 0 0 20px rgba(255, 102, 0, 0.7),
+            0 0 30px rgba(255, 0, 0, 0.5);
+        }
+      }
+
+      .flame-text {
+        animation: flicker 3s infinite alternate;
+      }
+
       .tagline {
         animation: fadeIn 1s ease-out forwards;
       }
 
       .section-title {
-        font-family: "Passion One", cursive;
+        font-family: "Permanent Marker", cursive;
         font-size: 2.5rem;
         color: var(--primary-color);
         text-align: center;
@@ -293,6 +344,29 @@
           max-width: 350px;
         }
 
+        .flame-text {
+          font-size: 3rem;
+        }
+
+        .number-five {
+          font-size: 4rem;
+        }
+
+        .bull-icon {
+          width: 60px;
+          height: 60px;
+        }
+
+        .bull-icon::before {
+          width: 60px;
+          height: 60px;
+        }
+
+        .bull-icon::after {
+          font-size: 42px;
+          left: 10px;
+        }
+
         .tagline {
           font-size: 1.1rem;
           padding: 8px 20px;
@@ -326,6 +400,30 @@
 
         .flame-logo {
           max-width: 280px;
+        }
+
+        .flame-text {
+          font-size: 2.3rem;
+        }
+
+        .number-five {
+          font-size: 3rem;
+        }
+
+        .bull-icon {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+
+        .bull-icon::before {
+          width: 50px;
+          height: 50px;
+        }
+
+        .bull-icon::after {
+          font-size: 34px;
+          left: 8px;
         }
 
         .tagline {
@@ -390,13 +488,17 @@
     <div class="container">
       <header>
         <div class="flame-logo">
-          <img src="f5logo.png" alt="Flame 5 Logo" />
+          <div class="bull-icon"></div>
+          <div class="logo-text">
+            <span class="flame-text">Flame</span>
+            <span class="number-five">5</span>
+          </div>
         </div>
-        <p class="tagline">BEYOND THE BURGER</p>
+        <p class="tagline">FROM THE FLAMES</p>
       </header>
 
       <div class="menu-section">
-        <h2 class="section-title">Burgers & Sandwiches</h2>
+        <h2 class="section-title">BEYOND THE BURGER</h2>
 
         <div class="menu-item">
           <div class="item-header">
@@ -651,15 +753,6 @@
     <script>
       // Simple script to add some interactivity
       document.addEventListener("DOMContentLoaded", function () {
-        // Add parallax effect to logo
-        const logo = document.querySelector(".flame-logo img");
-        window.addEventListener("scroll", function () {
-          const scrolled = window.scrollY;
-          if (scrolled < 300) {
-            logo.style.transform = `translateY(${scrolled * 0.05}px)`;
-          }
-        });
-
         // Make the order button functional
         const orderBtn = document.querySelector(".order-btn");
         orderBtn.addEventListener("click", function () {
