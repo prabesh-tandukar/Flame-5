@@ -219,13 +219,6 @@
         border-bottom: none;
       }
 
-      .item-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.5rem;
-      }
-
       .item-name {
         font-weight: 700;
         color: var(--accent-red);
@@ -315,19 +308,36 @@
         transform: translateY(1px);
       }
 
-      /* Badge for special items */
+      /* Replace the existing special-badge CSS with this */
       .special-badge {
-        position: absolute;
-        top: -10px;
-        right: -10px;
+        position: relative; /* Change from absolute to relative */
+        display: inline-block;
         background: var(--secondary-color);
         color: #333;
         font-size: 0.7rem;
         padding: 3px 8px;
         border-radius: 10px;
         font-weight: 700;
-        transform: rotate(10deg);
+        margin-left: 10px; /* Add space between name and badge */
+        vertical-align: middle;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        top: -1px; /* Slight adjustment to align better */
+      }
+
+      /* Also update the item-header CSS */
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Changed from baseline to center */
+        margin-bottom: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      /* Add this if you want the name and badge to stay together */
+      .item-name-wrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
       }
 
       /* Responsive adjustments */
